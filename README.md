@@ -1,7 +1,7 @@
 # 🚀 Space Pixel Chatbot
 
 <p align="center">
-  <img src="https://your-image-link-here.jpg" alt="Pixel Chatbot Preview" width="600"/>
+  <img src="welc.png" alt="Pixel Chatbot Preview" width="600"/>
 </p>
 
 A retro-style chatbot built using **Flask**, **HTML**, **Tailwind CSS**, and integrated with real **NASA APIs**, **ISS location tracking**, and **Wikipedia summaries** to answer your space-related questions.
