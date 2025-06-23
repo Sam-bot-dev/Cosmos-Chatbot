@@ -9,7 +9,7 @@ def chatbot():
     return render_template('chatbot.html')
 
 app.run(debug=True)
-print()
+
 
 
 
