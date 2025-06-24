@@ -21,7 +21,7 @@ A retro-style chatbot built using **Flask**, **HTML**, **Tailwind CSS**, and int
 ## 📷 Screenshots
 
 ### 🌠 Chat UI
-<img src="https://your-chat-image-url.jpg" alt="Chat UI" width="600"/>
+<img src="https://webbackgrnd.png" alt="Chat UI" width="600"/>
 
 ### 🛰️ ISS Tracking Example
 <img src="https://your-iss-image-url.jpg" alt="ISS Location Example" width="600"/>
