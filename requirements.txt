@@ -1,5 +1,4 @@
-gunicorn
 Flask
+gunicorn
 requests
 wikipedia
-flask-cors
