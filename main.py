@@ -7,9 +7,13 @@ def index():
 @app.route('/chatbot.html')
 def chatbot():
     return render_template('chatbot.html')
-
+@app.route('/ask', methods=['POST'])
+def ask():
+    pass
 app.run(debug=True)
 
-
-
-
+query =""
+def search(query):
+    req= wikipedia.summary(query,sentences=1)
+    print(req)
+search(query)

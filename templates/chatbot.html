@@ -13,9 +13,37 @@
     <input
       class="input"
       name="text"
+      id="userInput"
       type="text"
       placeholder="Search in Cosmos..."
+      onkeydown="if(event.key==='Enter'){submitQuestion();}"
     />
-  </div></center>
+    <div class="suggestions-box" id="suggestionBox">
+      <div onclick="selectSuggestion(this)">What is a black hole?</div>
+      <div onclick="selectSuggestion(this)">picture of the day</div>
+      <div onclick="selectSuggestion(this)">Can humans live on Mars?</div>
+      <div onclick="selectSuggestion(this)">What is dark matter?</div>
+    </div>
+  </div>
+  </div>
+</center>
+  <script>
+    function submitQuestion(){
+      const userInput = document.getElementById("userInput").value;
+      fetch
+    }
+    function selectSuggestion(el) {
+      alert("You selected: " + el.textContent);
+    }
+
+    function filterSuggestions(value) {
+      const suggestions = document.querySelectorAll("#suggestionBox div");
+      suggestions.forEach(item => {
+        item.style.display = item.textContent.toLowerCase().includes(value.toLowerCase()) ? "block" : "none";
+      });
+    }
+
+  </script>
 </body>
+  
 </html>

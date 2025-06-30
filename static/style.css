@@ -220,3 +220,34 @@ body{
   letter-spacing: 1px;
   text-shadow: 0px 0px 0 #000;
 }
+@font-face {
+  font-family: 'PixelFont';
+  src: url('https://fonts.cdnfonts.com/s/8273/PixelOperator.woff') format('woff');
+}
+
+input {
+  font-family: 'PixelFont', monospace;
+  padding: 10px;
+  width: 300px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 5px;
+}
+
+.suggestions-box {
+  width: 300px;
+  background: rgba(0, 0, 0, 0.85);
+  border: 2px solid #fff;
+  border-radius: 5px;
+  font-family: 'PixelFont', monospace;
+  color: white;
+}
+
+.suggestions-box div {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestions-box div:hover {
+  background-color: #333;
+}
