@@ -1,9 +1,10 @@
 from flask import Flask, render_template, request,jsonify
 import wikipedia
 import requests
-
+from flask_cors import CORS
 app = Flask(__name__)
-NASA_API_KEY = "PYERVtkoB8kyw7k5hEG7aNbMORIYpy6lZVqyt3Ny"
+CORS(app)
+# app = Flask(__name__)
 
 
 @app.route('/')
