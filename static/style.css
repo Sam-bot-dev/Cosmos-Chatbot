@@ -251,3 +251,21 @@ input {
 .suggestions-box div:hover {
   background-color: #333;
 }
+.response-area {
+  font-family: 'Press Start 2P', cursive;
+  color: #ffffff; /* White text */
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 2px solid #6366f1; /* Indigo border */
+  padding: 16px;
+  margin-top: 10px;
+  font-size: 10px;
+  line-height: 1.6;
+  border-radius: 8px;
+  min-height: 100px;
+  width: 100%;
+  max-width: 600px;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  box-shadow: 0 0 10px #6366f1;
+}
+

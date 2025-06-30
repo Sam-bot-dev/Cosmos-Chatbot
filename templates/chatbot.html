@@ -6,10 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
   <button class="pixel-button min-w-[120px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-none h-12 px-6 text-sm md:text-base leading-normal tracking-wider flex"onclick="window.location.href='/'"> <-- </button>
   <center><div class="input-container">
+    <div id="botResponse" class="response-area">...</div>
     <input
       class="input"
       name="text"
@@ -28,12 +30,42 @@
   </div>
 </center>
   <script>
-    function submitQuestion(){
+    function submitQuestion() {
       const userInput = document.getElementById("userInput").value;
-      fetch
+      const responseBox = document.getElementById("botResponse");
+
+      responseBox.innerHTML = "🤖 Thinking...";
+
+      fetch('/ask', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ question: userInput })
+      })
+      .then(res => res.json())
+      .then(data => {
+        let html = `<p style="color: white;">${data.answer}</p>`;
+
+        // Show image or video
+        if (data.media_type === "image") {
+          html += `<img src="${data.media_url}" alt="NASA Image of the Day" 
+            style="margin-top: 1rem; max-width: 100%; border: 2px solid #6366f1; box-shadow: 0 0 10px #6366f1;">`;
+        } else if (data.media_type === "video") {
+          html += `<iframe src="${data.media_url}" frameborder="0" allowfullscreen 
+            style="margin-top: 1rem; width: 100%; height: 300px; border: 2px solid #6366f1; box-shadow: 0 0 10px #6366f1;"></iframe>`;
+        }
+
+        responseBox.innerHTML = html;
+      })
+      .catch(() => {
+        responseBox.textContent = "⚠️ Something went wrong.";
+      });
     }
+
     function selectSuggestion(el) {
-      alert("You selected: " + el.textContent);
+      document.getElementById("userInput").value = el.textContent;
+      submitQuestion();
     }
 
     function filterSuggestions(value) {
