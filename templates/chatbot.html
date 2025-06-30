@@ -30,38 +30,34 @@
   </div>
 </center>
   <script>
-    function submitQuestion() {
+    function submitQuestion(){
       const userInput = document.getElementById("userInput").value;
       const responseBox = document.getElementById("botResponse");
 
       responseBox.innerHTML = "🤖 Thinking...";
 
-      fetch('/ask', {
+      fetch('/ask',{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ question: userInput })
+        body: JSON.stringify({question: userInput})
       })
       .then(res => res.json())
       .then(data => {
-        let html = `<p style="color: white;">${data.answer}</p>`;
+        let finalResponse = `<p style="white-space: pre-wrap;">🤖 ${data.answer}</p>`;
 
-        // Show image or video
-        if (data.media_type === "image") {
-          html += `<img src="${data.media_url}" alt="NASA Image of the Day" 
-            style="margin-top: 1rem; max-width: 100%; border: 2px solid #6366f1; box-shadow: 0 0 10px #6366f1;">`;
-        } else if (data.media_type === "video") {
-          html += `<iframe src="${data.media_url}" frameborder="0" allowfullscreen 
-            style="margin-top: 1rem; width: 100%; height: 300px; border: 2px solid #6366f1; box-shadow: 0 0 10px #6366f1;"></iframe>`;
+        if (data.media_type === "image" && data.media_url) {
+          finalResponse += `<br><img src="${data.media_url}" alt="NASA image" style="max-width: 100%; margin-top: 10px; border: 2px solid #6366f1; border-radius: 12px;">`;
         }
 
-        responseBox.innerHTML = html;
+        responseBox.innerHTML = finalResponse;
       })
       .catch(() => {
-        responseBox.textContent = "⚠️ Something went wrong.";
+        responseBox.textContent = "⚠️ Something went wrong. Please try again.";
       });
     }
+
 
     function selectSuggestion(el) {
       document.getElementById("userInput").value = el.textContent;

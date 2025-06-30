@@ -268,4 +268,7 @@ input {
   white-space: pre-wrap;
   box-shadow: 0 0 10px #6366f1;
 }
+img {
+  image-rendering: pixelated;
+}
 

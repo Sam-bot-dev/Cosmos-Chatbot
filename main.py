@@ -1,10 +1,11 @@
 from flask import Flask, render_template, request,jsonify
 import wikipedia
 import requests
+import os
+NASA_API_KEY = os.environ.get("NASA_API_KEY")
 
 app = Flask(__name__)
 
-NASA_API_KEY = 'PYERVtkoB8kyw7k5hEG7aNbMORIYpy6lZVqyt3Ny'
 
 @app.route('/')
 def index():
