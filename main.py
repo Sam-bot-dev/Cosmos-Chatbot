@@ -4,7 +4,7 @@ import requests
 
 app = Flask(__name__)
 
-NASA_API_KEY = 'PYERVtkoB8kyw7k5hEG7aNbMORIYpy6lZVqyt3Ny'
+NASA_API_KEY = ''#add your own api
 
 @app.route('/')
 def index():
