@@ -2,7 +2,7 @@ from flask import Flask, render_template, request,jsonify
 import wikipedia
 import requests
 import os
-NASA_API_KEY = os.environ.get("NASA_API_KEY")
+NASA_API_KEY = os.environ.get("NASA_API_KEY")# in order for this to work for you , you have to add your own api.
 
 app = Flask(__name__)
 
