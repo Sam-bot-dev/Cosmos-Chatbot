@@ -1,11 +1,15 @@
 from flask import Flask, render_template, request,jsonify
-import wikipedia
+import google.generativeai as genai
 import requests
 import os
 NASA_API_KEY = os.environ.get("NASA_API_KEY")# in order for this to work for you , you have to add your own api.
-
+my_secret = os.environ['gemini-2.0flash']
+genai.configure(api_key=my_secret)
 app = Flask(__name__)
+model = genai.GenerativeModel("gemini-2.0-flash") # ADD your model and api key
 
+chat = model.start_chat(history=[])
+print("Chat with Gemini 2.0 (Type 'exit' to quit)")
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -43,9 +47,9 @@ def ask():
             })
 
     elif "picture of earth" in question or "earth" in question:
-        
+
         try:
-            
+
             # Step 1: Call EPIC API
             epic_url = f"https://api.nasa.gov/EPIC/api/natural/images?api_key={NASA_API_KEY}"
             epic_response = requests.get(epic_url).json()
@@ -87,20 +91,32 @@ def ask():
         return jsonify({"answer":"Dark matter is a type of matter that is thought to account for approximately 27% of the total mass and energy in the universe. It is called dark because it does not interact with the electromagnetic force, and it therefore does not absorb, reflect, or emit light."})
     # Else, use Wikipedia
     else:
-        try:
-            summary = wikipedia.summary(question, sentences=2)
-            return jsonify({'answer': summary})
-        except wikipedia.exceptions.DisambiguationError as e:
-            return jsonify({
-                'answer':
-                f"Your question is too broad. Try being more specific.\nOptions: {', '.join(e.options[:5])}"
-            })
-        except wikipedia.exceptions.PageError:
-            return jsonify({
-                'answer':
-                "I couldn’t find anything related to that. Try rephrasing."
-            })
-        except Exception as e:
-            return jsonify({'answer': "Something went wrong. Try again."})
+      user_input = question
+
+      # Exit condition
+      if user_input.lower() in ["exit", "quit", "bye", "e"]:
+          print("Goodbye!")
+  
+      else:
+        response = chat.send_message(user_input)
+        print(response.text)
+        
+      # Normal text chat
+      
+        # try:
+        #     summary = wikipedia.summary(question, sentences=2)
+        #     return jsonify({'answer': summary})
+        # except wikipedia.exceptions.DisambiguationError as e:
+        #     return jsonify({
+        #         'answer':
+        #         f"Your question is too broad. Try being more specific.\nOptions: {', '.join(e.options[:5])}"
+        #     })
+        # except wikipedia.exceptions.PageError:
+        #     return jsonify({
+        #         'answer':
+        #         "I couldn’t find anything related to that. Try rephrasing."
+        #     })
+        # except Exception as e:
+        #     return jsonify({'answer': "Something went wrong. Try again."})
 if __name__ == '__main__':
     app.run(debug=True)
