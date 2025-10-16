@@ -9,7 +9,7 @@ app = Flask(__name__)
 model = genai.GenerativeModel("gemini-2.0-flash") # ADD your model and api key
 
 chat = model.start_chat(history=[])
-print("Chat with Gemini 2.0 (Type 'exit' to quit)")
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -92,14 +92,10 @@ def ask():
     # Else, use Wikipedia
     else:
       user_input = question
-
-      # Exit condition
-      if user_input.lower() in ["exit", "quit", "bye", "e"]:
-          print("Goodbye!")
-  
-      else:
+      if question == user_input:
         response = chat.send_message(user_input)
-        print(response.text)
+        # print(response.text)
+        return jsonify({'answer': response.text})
         
       # Normal text chat
       
