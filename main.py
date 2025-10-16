@@ -3,7 +3,7 @@ import google.generativeai as genai
 import requests
 import os
 NASA_API_KEY = os.environ.get("NASA_API_KEY")# in order for this to work for you , you have to add your own api.
-my_secret = os.environ['gemini-2.0flash']
+my_secret = os.environ['gemini-2.0_flash']
 genai.configure(api_key=my_secret)
 app = Flask(__name__)
 model = genai.GenerativeModel("gemini-2.0-flash") # ADD your model and api key
