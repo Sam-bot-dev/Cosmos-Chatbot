@@ -24,7 +24,7 @@ def chatbot():
 def ask():
     data = request.get_json()
     question= data.get('question', '').lower().strip()
-    if 'picture of the day' in question or 'apod' in question:
+    if 'Picture of the day' in question or 'apod' in question:
         try:
             url = f"https://api.nasa.gov/planetary/apod?api_key={NASA_API_KEY}"
             response = requests.get(url).json()
